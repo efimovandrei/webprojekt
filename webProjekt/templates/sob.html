@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Календарь событий</h1>
+{% for item in sob%}
+<div class="col-md6 border rounded">
+    <h2>{{item.title}}</h2>
+    <div>
+        {{item.content}}
+    </div>
+    <div>
+        Дата мероприятия - {{item.date}}
+    </div>
+
+</div>
+{% endfor %}
+{% if current_user.is_authenticated%}
+{% for i in teacher%}
+{%if i.is_teacher == True%}
+<a href="/sob_add" class="btn btn-secondary">Добавить мероприятие</a>
+{%endif%}
+{%endfor%}
+{% endif %}
+
+{% endblock %}
